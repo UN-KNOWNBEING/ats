@@ -1692,5 +1692,5 @@
             alert('You have been logged out successfully.');
         }
     </script>
-</body>
-</html>
+<body>
+<html>
