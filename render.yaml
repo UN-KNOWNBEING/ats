@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: ats-backend
+    env: python
+    plan: free
+    branch: main
+    rootDir: ats-backend
+    buildCommand: "pip install -r requirements.txt && python manage.py migrate && python manage.py collectstatic --noinput"
+    startCommand: "gunicorn ats_backend.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: "ats_backend.settings"
+      - key: PYTHON_VERSION
+        value: "3.11.5"
+      # Add other environment variables here, like SECRET_KEY, as needed
+envVars:
+  - key: SECRET_KEY
+    value: "9OYrVRYuqe9RIfbJONYCxGcPN6S_5IwHMN_EefEInFZAvthcVZ_OnTHsqkHY-eYGwoI"
+  - key: DEBUG
+    value: "False"
